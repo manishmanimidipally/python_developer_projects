@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel ="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Tic Tac Toe</h1>
+    </div>
+
+    <div class="players">
+        <div class="player1">
+            Player X
+            <div class="scoreX">
+                0
+            </div>
+        </div>
+        <div class="name">
+            VS
+        </div>
+        <div class="player1">
+            Player 0
+            <div class="score0">
+                0
+            </div>
+        </div>
+    </div>
+
+    <div class="turn">
+        X's Turn
+    </div>
+
+    <div class="board">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    </div>
+
+    <div class="buttons">
+        <div class="btn1">
+            NEW GAME
+        </div>
+        <div class="btn2">
+            RESET
+        </div>
+    </div>
+
+    <script src="{{ url_for('static',filename='script.js') }}"></script>
+</body>
+</html>
