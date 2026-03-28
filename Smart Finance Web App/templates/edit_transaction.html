@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Transaction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Edit Transaction</h2>
+
+    <form method="POST">
+        <label>Type</label>
+        <select name="type">
+            <option value="income" {% if data[1] == 'income' %}selected{% endif %}>Income</option>
+            <option value="expense" {% if data[1] == 'expense' %}selected{% endif %}>Expense</option>
+        </select>
+
+        <label>Amount</label>
+        <input type="number" name="amount" value="{{ data[2] }}" required>
+
+        <label>Category</label>
+        <input type="text" name="category" value="{{ data[3] }}" required>
+
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+</body>
+</html>

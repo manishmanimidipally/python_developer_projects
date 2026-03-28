@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Finance Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>💰 Smart Finance Dashboard</h1>
+
+    <a href="/add" class="btn">+ Add Transaction</a>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td class="{{ row[1] }}">{{ row[1] }}</td>
+            <td>₹ {{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>
+                <a href="/edit/{{ row[0] }}" class="edit-btn">Edit</a>
+                <a href="/delete/{{ row[0] }}" class="delete-btn">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>
