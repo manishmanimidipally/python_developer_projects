@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Job Tracker & Alert System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-briefcase"></i>
+                <span>Job Tracker</span>
+            </div>
+            <div class="nav-info">
+                <span class="job-count">{{ jobs|length }} Jobs</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>💼 AI Job Tracker Dashboard</h1>
+            <p class="subtitle">Track and manage your job opportunities</p>
+        </div>
+
+        {% if error %}
+        <div class="alert alert-error">
+            <i class="fas fa-exclamation-circle"></i>
+            {{ error }}
+        </div>
+        {% endif %}
+
+        {% if jobs %}
+            <div class="table-wrapper">
+                <table class="jobs-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-hashtag"></i> ID</th>
+                            <th><i class="fas fa-briefcase"></i> Position</th>
+                            <th><i class="fas fa-building"></i> Company</th>
+                            <th><i class="fas fa-link"></i> Source</th>
+                            <th><i class="fas fa-calendar"></i> Date Added</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for job in jobs %}
+                        <tr class="job-row">
+                            <td class="job-id">{{ job[0] }}</td>
+                            <td class="job-title">{{ job[1] }}</td>
+                            <td class="job-company">{{ job[2] }}</td>
+                            <td class="job-source"><span class="badge">{{ job[3] }}</span></td>
+                            <td class="job-date">{{ job[4][:10] if job[4] else 'N/A' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <i class="fas fa-inbox"></i>
+                <h2>No jobs found</h2>
+                <p>Run the scraper to fetch job listings</p>
+                <button class="btn-primary" onclick="location.href='#'">Refresh</button>
+            </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AI Job Tracker. Built with <i class="fas fa-heart"></i> for job seekers.</p>
+    </footer>
+</body>
+</html>
